@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Penenang & Penyenang — Malam Tenang Bersama Stitch</title>
+  <meta name="description" content="Aplikasi penyenang dan penenang pasangan bernuansa malam berbintang, aurora lembut, dan maskot kartun Stitch biru yang menggemaskan.">
+  <meta name="theme-color" content="#0b1021">
+
+  <!-- Google Fonts: Playfair Display (Serif Puisi Romantis), Outfit (Modern Clean), Great Vibes (Kaligrafi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-frame-1">
+
+  <!-- Latar Belakang Kanvas Semesta: Bintang Kelap-Kelip, Bintang Jatuh & Aurora Borealis -->
+  <canvas id="universe-canvas"></canvas>
+  <div class="aurora-backdrop" aria-hidden="true">
+    <div class="aurora-layer aurora-1"></div>
+    <div class="aurora-layer aurora-2"></div>
+    <div class="aurora-layer aurora-3"></div>
+  </div>
+
+  <!-- Header Kontrol Atas (Suara Ambient & Info Siklus) -->
+  <header class="app-header">
+    <div class="header-left">
+      <button id="audio-toggle-btn" class="ctrl-btn" title="Nyalakan / Matikan Musik Malam" aria-label="Toggle Musik">
+        <span class="icon-speaker" id="speaker-icon">🎵</span>
+        <span class="sound-wave" id="sound-wave">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <span class="btn-text" id="audio-status-text">Musik Malam</span>
+      </button>
+    </div>
+    <div class="header-center">
+      <span class="starlight-badge" id="session-cycle-indicator">✨ Malam Teduh</span>
+    </div>
+    <div class="header-right">
+      <button id="quick-exit-btn" class="ctrl-btn ctrl-exit" title="Keluar / Pamit" aria-label="Keluar">
+        <span>🌙 Pamit</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Kontainer Utama Aplikasi (Single Page App Multi-Frame) -->
+  <main id="app-container">
+
+    <!-- ==============================================
+         FRAME 1: WELCOME SCREEN (Layar Pembuka & Play/Exit)
+         ============================================== -->
+    <section id="screen-welcome" class="app-screen active">
+      <div class="glass-card welcome-card">
+        <!-- Maskot Stitch Menyapa / Melambai -->
+        <div class="stitch-stage" id="stitch-welcome-container">
+          <!-- Rendered via SVG Stitch Engine -->
+        </div>
+
+        <div class="text-content">
+          <span class="sub-greeting">Ruang Teduh Jiwa</span>
+          <h1 class="main-title">Penyenang &amp; Penenang</h1>
+          <p class="calm-lead">
+            Tarik nafas pelan-pelan... Hembuskan semua lelah hari ini.<br>
+            Malam ini semesta, bintang-bintang, dan Stitch hadir hanya untuk membahagiakanmu.
+          </p>
+        </div>
+
+        <div class="action-buttons">
+          <button id="btn-start-play" class="btn-primary" aria-label="Mulai Masuk Aplikasi">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Mulai Perjalanan ✨</span>
+          </button>
+          <button id="btn-welcome-exit" class="btn-secondary" aria-label="Keluar Aplikasi">
+            <span class="btn-content">Nanti Dulu (Exit) ✕</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 2: INPUT NAMA PASANGAN & STITCH MENGINTIP
+         ============================================== -->
+    <section id="screen-name" class="app-screen">
+      <div class="glass-card name-card">
+        <!-- Maskot Stitch Mengintip dari atas kartu -->
+        <div class="stitch-peeking-anchor" id="stitch-name-container">
+          <!-- Stitch Peeking SVG -->
+        </div>
+
+        <div class="text-content">
+          <span class="step-tag">Langkah 1 dari 6</span>
+          <h2 class="card-title">Siapa Nama Seseorang yang Paling Berharga?</h2>
+          <p class="card-desc">
+            Bolehkah sebutkan nama panggilanmu atau orang yang paling kamu sayangi? Agar seluruh malam ini tercipta khusus untukmu.
+          </p>
+        </div>
+
+        <form id="form-name" onsubmit="return false;" class="input-group-form">
+          <div class="input-wrapper">
+            <input type="text" id="partner-name-input" placeholder="Tuliskan nama manismu di sini..." autocomplete="off" maxlength="30" required>
+            <span class="input-focus-border"></span>
+          </div>
+          <p id="name-error-msg" class="field-error" aria-live="polite"></p>
+
+          <button type="submit" id="btn-submit-name" class="btn-primary">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Lanjutkan Sayang 💫</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 3: KALIMAT KASIH & STITCH LOVE BESAR
+         ============================================== -->
+    <section id="screen-phrase" class="app-screen">
+      <div class="glass-card phrase-card">
+        <div class="stitch-stage" id="stitch-phrase-container">
+          <!-- Stitch dengan Love Besar -->
+        </div>
+
+        <div class="text-content">
+          <span class="step-tag">Ikrar Kasih &amp; Kehangatan</span>
+          <h2 class="card-title">Katakan Kalimat Ini di Dalam Hatimu...</h2>
+          <div class="quote-box">
+            <p id="special-affirmation-text">"Aku berharga, aku dicintai, dan lelahku malam ini dibalut oleh pelukan hangat semesta."</p>
+          </div>
+          <p class="quote-guide">Pencet tombol di bawah saat kamu sudah siap merasakannya dengan tulus:</p>
+        </div>
+
+        <div class="phrase-actions">
+          <button id="btn-trigger-love" class="btn-primary btn-pulse-love">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Aku Sudah Mengucapkannya ❤️</span>
+          </button>
+          <button id="btn-next-from-phrase" class="btn-primary hidden">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Lanjut Membuka Rahasia 💕</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 4: GERBANG "IYA" VS "TIDAK" (BUJUK MANIS LOOP)
+         ============================================== -->
+    <section id="screen-gate" class="app-screen">
+      <div class="glass-card gate-card">
+        <div class="stitch-stage" id="stitch-gate-container">
+          <!-- Stitch Mengedipkan Mata / Memohon Lucu -->
+        </div>
+
+        <div class="text-content">
+          <span class="step-tag">Permintaan Rahasia</span>
+          <h2 class="card-title" id="gate-question-text">Maukah kamu membuka rahasia malam terindah bersamaku?</h2>
+          <p class="card-desc" id="gate-plea-hint">
+            Ada kejutan yang sangat indah menantimu di balik pintu ini...
+          </p>
+        </div>
+
+        <div class="gate-buttons" id="gate-btn-wrapper">
+          <button id="btn-gate-yes" class="btn-success">
+            <span class="btn-content">Iya, Mau Banget! 💕</span>
+          </button>
+          <button id="btn-gate-no" class="btn-danger">
+            <span class="btn-content" id="btn-no-text">Tidak 😝</span>
+          </button>
+        </div>
+        <p id="gate-loop-feedback" class="playful-feedback" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 5: TANYA JAWAB SENTIMEN & REAKSI STITCH
+         ============================================== -->
+    <section id="screen-qna" class="app-screen">
+      <div class="glass-card qna-card">
+        <div class="stitch-stage" id="stitch-qna-container">
+          <!-- Stitch Bereaksi: Netral, Sedih Menangis, atau Bahagia Melompat -->
+        </div>
+
+        <div class="text-content">
+          <span class="step-tag">Bilik Hati</span>
+          <h2 class="card-title" id="qna-header-title">Apa yang Membuat Hatimu Merasa Damai?</h2>
+          <p class="card-desc" id="qna-instruction">
+            Ungkapkan perasaanmu dengan kata-kata yang lembut, sopan, atau romantis. Stitch selalu mendengarkanmu...
+          </p>
+        </div>
+
+        <div class="qna-input-box">
+          <textarea id="qna-user-text" rows="3" placeholder="Ceritakan atau tuliskan kata-kata indahmu di sini... (Contoh: Pelukanmu, bintang malam, rasa sayang kita)"></textarea>
+          <div class="qna-feedback-box" id="qna-feedback-msg" aria-live="polite"></div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="btn-submit-qna" class="btn-primary">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Kirim Kehangatan 💌</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 6: RUANG PUISI MALAM & BINTANG JATUH
+         ============================================== -->
+    <section id="screen-poetry" class="app-screen">
+      <div class="glass-card poetry-card">
+        <div class="stardust-decor top-decor">✨ 🌟 💫</div>
+
+        <div class="poetry-header">
+          <span class="poetry-tag" id="poetry-theme-tag">Bintang &amp; Ketenangan Jiwa</span>
+          <h2 class="poetry-title" id="poetry-partner-title">Untukmu Tersayang</h2>
+        </div>
+
+        <!-- Wadah Bait Puisi dengan Efek Muncul Lembut -->
+        <div class="poetry-body" id="poetry-lines-container">
+          <!-- Dynamic lines inserted via JS -->
+        </div>
+
+        <div class="stardust-decor bottom-decor">💫 🌟 ✨</div>
+
+        <div class="poetry-footer">
+          <button id="btn-next-poetry" class="btn-primary">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Lanjut ke Hadiah Istimewa 🌠</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 7: ANIMASI ROMANTIS CINCIN & BUKET BUNGA
+         ============================================== -->
+    <section id="screen-gift" class="app-screen">
+      <div class="glass-card gift-card">
+        <div class="stitch-stage" id="stitch-gift-container">
+          <!-- Stitch mempersembahkan hadiah -->
+        </div>
+
+        <div class="gift-showcase">
+          <!-- Kotak Cincin Berkilau -->
+          <div class="gift-item ring-box" id="interactive-ring" title="Klik untuk kilau cinta!">
+            <div class="ring-sparkle-halo"></div>
+            <div class="ring-icon-visual">
+              <svg viewBox="0 0 100 100" class="ring-svg" width="90" height="90">
+                <circle cx="50" cy="55" r="28" fill="none" stroke="#fbbf24" stroke-width="8" stroke-dasharray="160" />
+                <polygon points="50,15 62,30 38,30" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2" />
+                <polygon points="50,15 56,22 44,22" fill="#ffffff" />
+                <circle cx="50" cy="22" r="3" fill="#ffffff" class="gem-glint" />
+              </svg>
+            </div>
+            <span class="gift-label">Cincin Janji Suci 💍</span>
+          </div>
+
+          <!-- Buket Bunga Cantik -->
+          <div class="gift-item bouquet-box" id="interactive-bouquet" title="Klik untuk harum kasih!">
+            <div class="flower-petals-halo"></div>
+            <div class="bouquet-icon-visual">
+              <svg viewBox="0 0 100 100" class="bouquet-svg" width="90" height="90">
+                <!-- Daun Hijau Sage -->
+                <path d="M50 85 C35 70 25 55 35 40 C45 55 45 75 50 85 Z" fill="#81b29a" opacity="0.9"/>
+                <path d="M50 85 C65 70 75 55 65 40 C55 55 55 75 50 85 Z" fill="#68a68a" opacity="0.9"/>
+                <!-- Bunga Mawar & Lavender Pastel -->
+                <circle cx="40" cy="38" r="14" fill="#f472b6" />
+                <circle cx="40" cy="38" r="8" fill="#fda4af" />
+                <circle cx="60" cy="38" r="14" fill="#f472b6" />
+                <circle cx="60" cy="38" r="8" fill="#fda4af" />
+                <circle cx="50" cy="26" r="15" fill="#f43f5e" />
+                <circle cx="50" cy="26" r="9" fill="#fecdd3" />
+                <!-- Pita Baby Blue -->
+                <path d="M40 75 Q50 68 60 75 Q50 82 40 75" fill="#93c5fd" />
+                <path d="M44 76 L36 94 M56 76 L64 94" stroke="#93c5fd" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="gift-label">Buket Bunga Kasih 💐</span>
+          </div>
+        </div>
+
+        <div class="text-content gift-text">
+          <p class="gift-quote">
+            "Untukmu yang selalu istimewa di setiap detik hembusan nafasku.<br>
+            Hari ini, esok, dan selamanya, kamu adalah alasan terindah di balik senyumku."
+          </p>
+          <span class="tap-hint">✨ Sentuh cincin atau bunga untuk memancarkan kilau cinta! ✨</span>
+        </div>
+
+        <div class="action-buttons">
+          <button id="btn-next-gift" class="btn-primary">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Simpan di Hati &amp; Lanjut 💖</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         FRAME 8: PENUTUP & DYNAMIC REPLAY ENGINE
+         ============================================== -->
+    <section id="screen-replay" class="app-screen">
+      <div class="glass-card replay-card">
+        <div class="stitch-stage" id="stitch-replay-container">
+          <!-- Stitch Memberikan Flying Kiss -->
+        </div>
+
+        <div class="text-content">
+          <span class="step-tag">Pintu Kelana Rasa</span>
+          <h2 class="card-title">Apakah Ingin Melihat Hal Indah yang Lain Lagi?</h2>
+          <p class="card-desc" id="replay-desc-text">
+            Malam ini masih panjang, dan aku masih memiliki puisi serta kata-kata manis lain yang belum sempat kubisikkan padamu...
+          </p>
+        </div>
+
+        <div class="action-buttons horizontal-split">
+          <button id="btn-replay-yes" class="btn-success">
+            <span class="btn-content">Iya, Mau Lihat Lagi ✨</span>
+          </button>
+          <button id="btn-replay-no" class="btn-secondary">
+            <span class="btn-content">Sudah Cukup, Mau Istirahat 🌙</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================
+         MODAL / LAYAR PAMIT (EXIT / FAREWELL SCREEN)
+         ============================================== -->
+    <section id="screen-exit" class="app-screen">
+      <div class="glass-card exit-card">
+        <div class="stitch-stage" id="stitch-exit-container">
+          <!-- Stitch Tidur Nyenyak / Peluk Bintang -->
+        </div>
+
+        <div class="text-content">
+          <h2 class="card-title">Selamat Beristirahat Sayangku 🌙</h2>
+          <p class="card-desc" id="exit-farewell-message">
+            Tidurlah dengan nyenyak. Biarkan semua lelahmu hanyut bersama debu bintang malam ini.
+            Ingatlah selalu bahwa kamu begitu berharga dan dicintai sepenuh jiwa. Sampai jumpa di hari esok yang lebih indah!
+          </p>
+        </div>
+
+        <div class="action-buttons">
+          <button id="btn-restart-app" class="btn-primary">
+            <span class="btn-glow"></span>
+            <span class="btn-content">Buka Kembali Ruang Tenang 🌟</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Script Interaksi, Sound Synth, & Canvas Star System -->
+  <script src="app.js"></script>
+</body>
+</html>

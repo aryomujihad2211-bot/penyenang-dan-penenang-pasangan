@@ -1,0 +1,887 @@
+/* ==========================================================================
+   PENENANG & PENYENANG — DESIGN SYSTEM & EYE-COMFORT STYLING
+   Palet Warna Khusus Malam Tenang, Anti-Glare & Glassmorphism Ramah Mata
+   ========================================================================== */
+
+/* 1. VARIABEL WARNA GLOBAL & DESIGN TOKENS */
+:root {
+  /* Font Families */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-script: 'Great Vibes', cursive;
+  --font-sans: 'Outfit', 'Quicksand', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Default Base Color Tokens (Frame 1: Welcome Screen) */
+  --bg-gradient-start: #070b18;
+  --bg-gradient-end: #0e152d;
+  --card-bg: rgba(18, 26, 54, 0.55);
+  --card-border: rgba(94, 137, 222, 0.22);
+  --card-glow: rgba(56, 189, 248, 0.12);
+
+  /* Text Colors (Eye-comfort warm ivories and creams, not 100% white) */
+  --text-primary: #f3f4f6;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-warm-gold: #fef9c3;
+  --text-accent-pink: #f472b6;
+
+  /* Stitch Character Tokens */
+  --stitch-body: #4982db;
+  --stitch-dark: #325fb0;
+  --stitch-belly: #86b9f7;
+  --stitch-ear-inner: #f29bb0;
+  --stitch-eye: #111827;
+  --stitch-nose: #1e3a8a;
+
+  /* Interactive Elements */
+  --btn-primary-bg: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  --btn-primary-text: #f8fafc;
+  --btn-primary-glow: rgba(59, 130, 246, 0.35);
+  
+  --btn-success-bg: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --btn-danger-bg: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+
+  /* Animation Timings */
+  --transition-theme: background 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-card: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 2. THEME COLOR SHIFTS PER FRAME (ANTI-BOREDOM & EYE-COMFORT) */
+body.theme-frame-1 {
+  /* Frame 1: Welcome - Deep Midnight Indigo */
+  --bg-gradient-start: #070b18;
+  --bg-gradient-end: #0e162f;
+  --card-bg: rgba(16, 24, 52, 0.58);
+  --card-border: rgba(77, 136, 223, 0.25);
+  --card-glow: rgba(56, 189, 248, 0.14);
+}
+
+body.theme-frame-2 {
+  /* Frame 2: Name Input - Twilight Slate Violet */
+  --bg-gradient-start: #0a0c1e;
+  --bg-gradient-end: #171536;
+  --card-bg: rgba(26, 23, 56, 0.56);
+  --card-border: rgba(167, 139, 250, 0.25);
+  --card-glow: rgba(167, 139, 250, 0.16);
+}
+
+body.theme-frame-3 {
+  /* Frame 3: Love Phrase - Deep Velvet Plum & Warm Rose */
+  --bg-gradient-start: #11091a;
+  --bg-gradient-end: #22122b;
+  --card-bg: rgba(38, 18, 48, 0.58);
+  --card-border: rgba(244, 114, 182, 0.25);
+  --card-glow: rgba(244, 63, 94, 0.18);
+}
+
+body.theme-frame-4 {
+  /* Frame 4: Gate - Muted Deep Navy with Playful Sage */
+  --bg-gradient-start: #090e1e;
+  --bg-gradient-end: #121e3c;
+  --card-bg: rgba(17, 29, 61, 0.58);
+  --card-border: rgba(52, 211, 153, 0.22);
+  --card-glow: rgba(56, 189, 248, 0.15);
+}
+
+body.theme-frame-5 {
+  /* Frame 5: Q&A - Reflective Deep Twilight */
+  --bg-gradient-start: #08101a;
+  --bg-gradient-end: #0f1f33;
+  --card-bg: rgba(16, 33, 54, 0.56);
+  --card-border: rgba(45, 212, 191, 0.24);
+  --card-glow: rgba(45, 212, 191, 0.14);
+}
+
+body.theme-frame-6 {
+  /* Frame 6: Poetry - Cosmic Midnight Obsidian with Starlight */
+  --bg-gradient-start: #050711;
+  --bg-gradient-end: #0a1124;
+  --card-bg: rgba(12, 18, 38, 0.65);
+  --card-border: rgba(253, 230, 138, 0.22);
+  --card-glow: rgba(251, 191, 36, 0.16);
+}
+
+body.theme-frame-7 {
+  /* Frame 7: Gift - Royal Midnight Amethyst & Gold */
+  --bg-gradient-start: #0d0a1c;
+  --bg-gradient-end: #1e1338;
+  --card-bg: rgba(34, 19, 62, 0.6);
+  --card-border: rgba(251, 191, 36, 0.28);
+  --card-glow: rgba(244, 114, 182, 0.18);
+}
+
+body.theme-frame-8 {
+  /* Frame 8: Replay - Gentle Twilight Horizon */
+  --bg-gradient-start: #0a0e20;
+  --bg-gradient-end: #1b1633;
+  --card-bg: rgba(24, 23, 52, 0.58);
+  --card-border: rgba(129, 140, 248, 0.25);
+  --card-glow: rgba(168, 85, 247, 0.15);
+}
+
+body.theme-frame-exit {
+  /* Exit: Calming Farewell - Deep Warm Obsidian */
+  --bg-gradient-start: #050813;
+  --bg-gradient-end: #0b1122;
+  --card-bg: rgba(13, 20, 39, 0.65);
+  --card-border: rgba(148, 163, 184, 0.2);
+  --card-glow: rgba(148, 163, 184, 0.1);
+}
+
+/* 3. RESET & BASE STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background: radial-gradient(circle at 50% 20%, var(--bg-gradient-end) 0%, var(--bg-gradient-start) 100%);
+  color: var(--text-primary);
+  transition: var(--transition-theme);
+  position: relative;
+}
+
+/* 4. CANVAS BINTANG & AURORA OVERLAY */
+#universe-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.aurora-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60vh;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.7;
+}
+
+.aurora-layer {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  border-radius: 50%;
+  filter: blur(60px);
+  transform: translateZ(0);
+}
+
+.aurora-1 {
+  top: -20%;
+  left: -50%;
+  background: radial-gradient(ellipse at center, rgba(56, 189, 248, 0.15) 0%, rgba(13, 148, 136, 0.08) 50%, transparent 70%);
+  animation: auroraDrift1 22s ease-in-out infinite alternate;
+}
+
+.aurora-2 {
+  top: -15%;
+  left: 0%;
+  background: radial-gradient(ellipse at center, rgba(168, 85, 247, 0.14) 0%, rgba(244, 63, 94, 0.07) 50%, transparent 70%);
+  animation: auroraDrift2 28s ease-in-out infinite alternate;
+}
+
+.aurora-3 {
+  top: -30%;
+  right: -40%;
+  background: radial-gradient(ellipse at center, rgba(45, 212, 191, 0.12) 0%, rgba(59, 130, 246, 0.06) 60%, transparent 80%);
+  animation: auroraDrift1 35s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes auroraDrift1 {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  50% { transform: translateY(30px) scale(1.1) rotate(4deg); }
+  100% { transform: translateY(-20px) scale(0.95) rotate(-3deg); }
+}
+
+@keyframes auroraDrift2 {
+  0% { transform: translateY(0) scale(0.95) rotate(0deg); }
+  50% { transform: translateY(-25px) scale(1.08) rotate(-5deg); }
+  100% { transform: translateY(20px) scale(1.02) rotate(3deg); }
+}
+
+/* 5. HEADER BAR & KONTROL */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(7, 11, 24, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ctrl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.ctrl-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.ctrl-exit:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.starlight-badge {
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: var(--text-warm-gold);
+  background: rgba(253, 230, 138, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(253, 230, 138, 0.25);
+  font-weight: 500;
+}
+
+/* Sound Wave Animation */
+.sound-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.sound-wave i {
+  width: 2.5px;
+  height: 4px;
+  background-color: #38bdf8;
+  border-radius: 2px;
+  transition: height 0.2s ease;
+}
+
+.sound-wave.playing i:nth-child(1) { animation: wavePulse 1s infinite 0.1s; }
+.sound-wave.playing i:nth-child(2) { animation: wavePulse 0.8s infinite 0.3s; }
+.sound-wave.playing i:nth-child(3) { animation: wavePulse 1.2s infinite 0.2s; }
+.sound-wave.playing i:nth-child(4) { animation: wavePulse 0.9s infinite 0.4s; }
+
+@keyframes wavePulse {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+
+/* 6. MAIN APP CONTAINER & SCREEN TRANSITIONS */
+#app-container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 1.25rem 2.5rem;
+  z-index: 10;
+}
+
+.app-screen {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  width: 100%;
+  max-width: 640px;
+}
+
+.app-screen.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 7. GLASS CARDS STYLING */
+.glass-card {
+  position: relative;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38), 0 0 45px var(--card-glow);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: var(--transition-card);
+  overflow: visible;
+}
+
+.glass-card:hover {
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 55px var(--card-glow);
+}
+
+/* 8. TYPOGRAPHY STYLING */
+.sub-greeting {
+  display: inline-block;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #7dd3fc;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.step-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a78bfa;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  background: rgba(167, 139, 250, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+}
+
+.main-title {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-warm-gold);
+  margin-bottom: 1.1rem;
+  text-shadow: 0 2px 18px rgba(253, 230, 138, 0.2);
+}
+
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--text-primary);
+  margin-bottom: 0.9rem;
+}
+
+.calm-lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.card-desc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.8rem;
+}
+
+/* 9. STITCH STAGE & MASKOT ANIMATIONS */
+.stitch-stage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  min-height: 140px;
+}
+
+.stitch-peeking-anchor {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: -4.5rem;
+  margin-bottom: 0.5rem;
+  z-index: 5;
+}
+
+/* SVG Stitch General Elements */
+.stitch-svg {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.45));
+  overflow: visible;
+}
+
+/* Animasi Bernapas Stitch */
+.stitch-body-group {
+  transform-origin: 100px 150px;
+  animation: stitchBreathing 3.5s ease-in-out infinite;
+}
+
+@keyframes stitchBreathing {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.02, 0.98) translateY(2px); }
+}
+
+/* Telinga Stitch Goyang Halus */
+.stitch-ear-left {
+  transform-origin: 50px 75px;
+  animation: earFlapLeft 4s ease-in-out infinite;
+}
+
+.stitch-ear-right {
+  transform-origin: 150px 75px;
+  animation: earFlapRight 4s ease-in-out infinite 0.3s;
+}
+
+@keyframes earFlapLeft {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+@keyframes earFlapRight {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Kedipan Mata Stitch */
+.stitch-pupil {
+  animation: eyeBlink 4.5s infinite;
+  transform-origin: center;
+}
+
+@keyframes eyeBlink {
+  0%, 96%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0.1); }
+}
+
+/* Tangan Melambai Stitch */
+.stitch-waving-arm {
+  transform-origin: 40px 120px;
+  animation: stitchWaveArm 1.8s ease-in-out infinite;
+}
+
+@keyframes stitchWaveArm {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-25deg); }
+}
+
+/* Hati Love Berdenyut */
+.stitch-heart-big {
+  transform-origin: center;
+  animation: heartPulse 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.6));
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1.05); }
+  45% { transform: scale(1.18); }
+  65% { transform: scale(1); }
+}
+
+/* Air Mata Stitch Sedih */
+.stitch-tear-drop {
+  animation: tearFall 1.6s ease-in infinite;
+}
+
+@keyframes tearFall {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  85% { transform: translateY(22px); opacity: 0.9; }
+  100% { transform: translateY(30px); opacity: 0; }
+}
+
+/* Stitch Melompat Bahagia */
+.stitch-happy-jump {
+  animation: happyBounce 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes happyBounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-16px); }
+}
+
+/* 10. BUTTONS & FORMS */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.horizontal-split {
+  flex-direction: row;
+}
+
+.btn-primary, .btn-secondary, .btn-success, .btn-danger {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.95rem 1.8rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  box-shadow: 0 6px 20px var(--btn-primary-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: var(--btn-success-bg);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+  flex: 1;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+}
+
+.btn-danger {
+  background: var(--btn-danger-bg);
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+  flex: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: #e11d48;
+}
+
+/* Tombol Berdenyut Kasih */
+.btn-pulse-love {
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  box-shadow: 0 6px 22px rgba(244, 63, 94, 0.45);
+}
+
+.btn-pulse-love:hover {
+  box-shadow: 0 10px 28px rgba(244, 63, 94, 0.6);
+}
+
+/* Input Fields */
+.input-group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  width: 100%;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input, .qna-input-box textarea {
+  width: 100%;
+  padding: 1rem 1.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  outline: none;
+  transition: all 0.3s ease;
+  resize: none;
+}
+
+.input-wrapper input::placeholder, .qna-input-box textarea::placeholder {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.input-wrapper input:focus, .qna-input-box textarea:focus {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #38bdf8;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+.field-error {
+  color: #f87171;
+  font-size: 0.88rem;
+  margin-top: -0.5rem;
+  min-height: 1.2rem;
+  font-weight: 500;
+}
+
+/* 11. KHUSUS FRAME 3: QUOTE BOX */
+.quote-box {
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px dashed rgba(244, 114, 182, 0.35);
+  border-radius: 20px;
+  padding: 1.4rem 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.quote-box p {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #ffe4e6;
+}
+
+.quote-guide {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* 12. KHUSUS FRAME 4: GERBANG IYA VS TIDAK */
+.gate-buttons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.playful-feedback {
+  min-height: 2rem;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fde047;
+  transition: all 0.3s ease;
+}
+
+/* 13. KHUSUS FRAME 5: TANYA JAWAB */
+.qna-input-box {
+  margin-bottom: 1.5rem;
+}
+
+.qna-feedback-box {
+  min-height: 2rem;
+  margin-top: 0.8rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.feedback-sad {
+  color: #93c5fd;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+}
+
+.feedback-happy {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(134, 239, 172, 0.25);
+}
+
+/* 14. KHUSUS FRAME 6: RUANG PUISI MALAM */
+.poetry-card {
+  padding: 3rem 2.25rem;
+  border: 1px solid rgba(253, 230, 138, 0.3);
+}
+
+.stardust-decor {
+  font-size: 1.1rem;
+  letter-spacing: 0.6rem;
+  opacity: 0.6;
+}
+
+.top-decor { margin-bottom: 1.25rem; }
+.bottom-decor { margin-top: 1.75rem; margin-bottom: 1.75rem; }
+
+.poetry-tag {
+  display: inline-block;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #fde68a;
+  margin-bottom: 0.4rem;
+}
+
+.poetry-title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--text-warm-gold);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.poetry-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.poem-line {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.75;
+  color: var(--text-warm-gold);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.poem-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 15. KHUSUS FRAME 7: HADIAH CINCIN & BUNGA */
+.gift-showcase {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.gift-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  padding: 1rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gift-item:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(251, 191, 36, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 25px rgba(251, 191, 36, 0.25);
+}
+
+.ring-icon-visual svg, .bouquet-icon-visual svg {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.4));
+  transition: transform 0.4s ease;
+}
+
+.gift-item:hover svg {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.gift-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.gift-quote {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #fce7f3;
+  margin-bottom: 0.75rem;
+}
+
+.tap-hint {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+/* 16. UTILITIES & HIDDEN */
+.hidden {
+  display: none !important;
+}
+
+/* 17. RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+  .app-header {
+    padding: 0.75rem 1rem;
+  }
+
+  .ctrl-btn {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .starlight-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+  }
+
+  #app-container {
+    padding: 4.5rem 1rem 2rem;
+  }
+
+  .glass-card {
+    padding: 2rem 1.25rem;
+    border-radius: 22px;
+  }
+
+  .main-title {
+    font-size: 1.95rem;
+  }
+
+  .card-title {
+    font-size: 1.45rem;
+  }
+
+  .poem-line {
+    font-size: 1.08rem;
+    line-height: 1.65;
+  }
+
+  .gift-showcase {
+    gap: 1.25rem;
+  }
+
+  .horizontal-split {
+    flex-direction: column;
+  }
+}
